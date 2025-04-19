@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chalés São Mateus - Reservas</title>
+    <link rel="stylesheet" href="{% static 'css/reserva.css' %}" />
+  </head>
+  <body>
+    <div id="loader">
+      <div class="loader"></div>
+    </div>
+    <div class="content">
+      {% include 'base.html' %}
+      <main></main>
+    </div>
+  </body>
+</html>
