@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Chalés São Mateus - Finalizar Reserva</title>
+        <link rel="stylesheet" href="{% static 'css/finalizar.css' %}" />
+    </head>
+    <body>
+        <div id="loader">
+            <div class="loader"></div>
+        </div>
+        <div class="content">
+            {% include 'base.html' %}
+
+            <div class="resumo-reserva">
+                <h2>Resumo da Reserva</h2>
+                <p><strong>Chalé:</strong> {{ chale }}</p>
+                <p><strong>Check-in:</strong> {{ checkin }}</p>
+                <p><strong>Check-out:</strong> {{ checkout }}</p>
+                <p><strong>Quantidade de pessoas:</strong> {{ qtd }}</p>
+                <p><strong>Quantidade de diárias:</strong> {{ dias }}</p>
+                <p><strong>Taxa fixa:</strong> R$ {{ taxa }}</p>
+                <p><strong>Valor total:</strong> R$ {{ valor_total }}</p>
+                <button type="submit">Continuar</button>
+            </div>
+        </div>
+        <script type="module" src="{% static 'js/script.js' %}"></script>
+    </body>
+</html>

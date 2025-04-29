@@ -1,0 +1,21 @@
+Sistema de login e criação de contas (V)
+
+Página com fotos e descrição dos chalés (V)
+
+Funcionalidade dos admin adicionarem fotos com descrição (V)
+
+Sistema de reservas (V)
+
+Painel pros donos administrarem as reservas e ver os dados (x)
+    - O admin deve conseguir ver as informações das reservas (nome, chalé, qtde de pessoas, valor total e quantidade de diárias);
+    - Deve ter um gráfico mostrando o valor bruto e o valor liquido (mensal e anual) -> matplotlib;
+    - Deve ter um gráfico mostrando a quantidade de reservas (mensal e anual) -> matplotlib;
+
+Calendário de disponibilidade colorido   (x)
+
+Área de finalização da reserva (x)
+
+Área de login pro cliente acompanhar/reservar   (x)
+
+
+Integração com WhatsApp ou e-mail   (x)

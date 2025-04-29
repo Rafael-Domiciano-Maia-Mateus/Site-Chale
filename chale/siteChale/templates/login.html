@@ -1,0 +1,64 @@
+{% load static %}
+<link rel="shortcut icon" href="{% static 'favicon.ico' %}" />
+
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Chalés São Mateus - Login</title>
+        <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+    </head>
+    <body>
+        <div id="loader">
+            <div class="loader"></div>
+        </div>
+
+        <div class="content">
+            <main>
+                <section>
+                    <h2>Chalés São Mateus</h2>
+
+                    {% if messages %}
+                    <div class="messages">
+                        {% for message in messages %} {% if 'reserva' not in message.tags %}
+                        <p class="alert {{ message.tags }}">{{ message }}</p>
+                        {% endif %} {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <div>
+                            <label for="username">Usuário</label>
+                            <input
+                                type="text"
+                                name="username"
+                                id="username"
+                                placeholder="Digite seu nome de usuário"
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label for="password">Senha</label>
+                            <input
+                                type="password"
+                                name="password"
+                                id="password"
+                                placeholder="Digite sua senha"
+                                required
+                            />
+                        </div>
+                        <button type="submit">Entrar</button>
+                    </form>
+                    <p>Não tem uma conta? <a href="{% url 'register' %}">Clique aqui!</a></p>
+                </section>
+            </main>
+        </div>
+
+        <script src="{% static 'js/script.js' %}"></script>
+        <script>
+            alert('Esse site é apenas um protótipo!');
+        </script>
+    </body>
+</html>

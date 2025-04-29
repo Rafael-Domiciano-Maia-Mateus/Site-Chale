@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Chalés São Mateus - Homepage</title>
+        <link rel="stylesheet" href="{% static 'css/homepage.css' %}" />
+    </head>
+    <body>
+        <div id="loader">
+            <div class="loader"></div>
+        </div>
+
+        <div class="content">
+            <header id="header">
+                <section class="header-container">
+                    <a href="https://www.booking.com/Share-Vv52CoE" id="site-title"
+                        >Chalés São Mateus</a
+                    >
+                    <nav class="nav-menu">
+                        <ul class="nav-list">
+                            <li><a href="{% url 'login' %}" class="nav-link">Sair</a></li>
+                        </ul>
+                    </nav>
+                </section>
+            </header>
+
+            <aside id="aside">
+                <section>
+                    <ul>
+                        {% if user.is_staff %}
+                        <li><a href="{% url 'analise' %}" class="aside-link">Análise</a></li>
+                        {% endif %}
+                        <li><a href="{% url 'minha_conta' %}" class="aside-link">Usuário</a></li>
+                        <li><a href="{% url 'reservas' %}" class="aside-link">Reservas</a></li>
+                        <li><a href="{% url 'galeria' %}" class="aside-link">Fotos</a></li>
+                        <li><a href="{% url 'ajuda' %}" id="aside-link-ajuda">Ajuda</a></li>
+                    </ul>
+                </section>
+            </aside>
+
+            <main>
+                <section class="main-container">
+                    <h1>Chalés São Mateus</h1>
+                    <ul class="main-text">
+                        <li>
+                            <strong>Encontre felicidade, conforto e lazer em um só lugar</strong>
+                        </li>
+                    </ul>
+                    <ul class="main-lista">
+                        <li><a href="{% url 'galeria' %}" class="main-link">Fotos Chalés</a></li>
+                        <li><a href="{% url 'reservas' %}" class="main-link">Reservas</a></li>
+                    </ul>
+                </section>
+            </main>
+        </div>
+
+        <script src="{% static 'js/script.js' %}"></script>
+    </body>
+</html>

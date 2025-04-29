@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    </head>
+    <body>
+        {% block nav %}
+        <header id="header">
+            <section class="header-container">
+                <a href="https://www.booking.com/Share-Vv52CoE" id="site-title"
+                    >Chalés São Mateus</a
+                >
+                <nav class="nav-menu">
+                    <ul class="nav-list">
+                        <li><a href="{% url 'homepage' %}" class="nav-link">Homepage</a></li>
+                        <li><a href="{% url 'reservas' %}" class="nav-link">Reservas</a></li>
+                        <li><a href="{% url 'galeria' %}" class="nav-link">Fotos</a></li>
+                        <li><a href="{% url 'minha_conta' %}" class="nav-link">Usuário</a></li>
+                    </ul>
+                </nav>
+            </section>
+        </header>
+        {% endblock %}
+    </body>
+</html>

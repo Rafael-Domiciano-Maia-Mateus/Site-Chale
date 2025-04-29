@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Chalés São Mateus - Reservas</title>
+        <link rel="stylesheet" href="{% static 'css/reserva.css' %}" />
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/i18n/datepicker-pt-BR.js"></script>
+    </head>
+    <body>
+        <div id="loader">
+            <div class="loader"></div>
+        </div>
+
+        <div class="content">
+            {% include 'base.html' %}
+
+            <div class="container">
+                <h2 class="title-reserva">Faça sua reserva aqui</h2>
+
+                <form method="post" id="form-reserva" class="form-reserva">
+                    {% csrf_token %} {{ form.non_field_errors }}
+
+                    <div class="form-group">
+                        <label for="{{ form.telefone.id_for_label }}">Nº de telefone:</label>
+                        {{ form.telefone.errors }} {{ form.telefone }}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.chale.id_for_label }}">Chalé:</label>
+                        {{ form.chale.errors }} {{ form.chale }}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_qtd_pessoas">Quantidade de pessoas:</label>
+                        {{ form.qtd_pessoas.errors }}
+                        <select name="qtd_pessoas" id="id_qtd_pessoas" class="form-control">
+                            <option value="">--- Selecione ---</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.checkin.id_for_label }}">Check-in:</label>
+                        {{ form.checkin.errors }} {{ form.checkin }}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.checkout.id_for_label }}">Check-out:</label>
+                        {{ form.checkout.errors }} {{ form.checkout }}
+                    </div>
+
+                    <button type="submit">Reservar</button>
+                </form>
+            </div>
+        </div>
+
+        <script src="{% static 'js/script.js' %}"></script>
+        <script src="{% static 'js/reservas.js' %}"></script>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Chalés São Mateus - Upload de Foto</title>
+        <link rel="stylesheet" href="{% static 'css/upload_foto.css' %}" />
+    </head>
+    <body>
+        <div id="loader">
+            <div class="loader"></div>
+        </div>
+
+        <div class="content">
+            <header id="header">
+                <section class="header-container">
+                    <a href="https://www.booking.com/Share-Vv52CoE" id="site-title"
+                        >Chalés São Mateus</a
+                    >
+                    <nav class="nav-menu">
+                        <ul class="nav-list">
+                            <li><a href="{% url 'galeria' %}" class="nav-link">Voltar</a></li>
+                        </ul>
+                    </nav>
+                </section>
+            </header>
+
+            <main>
+                <div class="form-container">
+                    <h2>Adicionar Nova Foto</h2>
+                    {% if user.is_staff %}
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %} {{ form.as_p }}
+                        <button type="submit">Enviar</button>
+                    </form>
+                    {% else %}
+                    <p class="sem-permissao">Você não tem permissão para adicionar fotos.</p>
+                    {% endif %}
+                </div>
+            </main>
+        </div>
+
+        <script src="{% static 'js/script.js' %}"></script>
+    </body>
+</html>
