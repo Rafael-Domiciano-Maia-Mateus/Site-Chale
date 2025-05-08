@@ -47,9 +47,8 @@ def homepage(request):
     return render(request, 'homepage.html', {'fotos': fotos})
 
 
-def analise(request):
-    # pegar os dados do banco de dados (preço Total por dia/ mês)
-    return render(request, 'analise.html')
+def administracao(request):
+    return render(request, 'administracao.html')
 
 
 def minha_conta(request):

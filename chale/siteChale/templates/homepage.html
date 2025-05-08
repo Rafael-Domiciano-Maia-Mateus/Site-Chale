@@ -29,9 +29,9 @@
             <aside id="aside">
                 <section>
                     <ul>
-                        <!-- {% if user.is_staff %}
-                        <li><a href="{% url 'analise' %}" class="aside-link">Análise</a></li>
-                        {% endif %} -->
+                        {% if user.is_staff %}
+                        <li><a href="{% url 'administracao' %}" class="aside-link">Análise</a></li>
+                        {% endif %}
                         <li><a href="{% url 'minha_conta' %}" class="aside-link">Usuário</a></li>
                         <li><a href="{% url 'reservas' %}" class="aside-link">Reservas</a></li>
                         <li><a href="{% url 'galeria' %}" class="aside-link">Fotos</a></li>

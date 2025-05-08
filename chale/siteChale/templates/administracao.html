@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Chalés São Mateus - Administração</title>
+        <link rel="stylesheet" href="{% static 'css/administracao.css' %}" />
+    </head>
+    <body>
+        <div id="loader">
+            <div class="loader"></div>
+        </div>
+        <div class="content">
+            {% include 'base.html' %}
+
+            <main>
+                <section class="main-container">
+                    <h2>Bem Vindo(a)</h2>
+                    <div class="graficos">
+                        {% for chale in chale %} {% empty %}
+                        <p>Não há gráficos disponíveis no momento.</p>
+                        {% endfor %}
+                    </div>
+                </section>
+            </main>
+
+            <aside id="aside">
+                <section>
+                    <ul>
+                        <li>
+                            <select name="numeroChale" id="numeroChale" class="aside-link">
+                                <option value="">-- Selecione --</option>
+                            </select>
+                            <button type="submit">Confirmar</button>
+                        </li>
+                    </ul>
+                </section>
+            </aside>
+        </div>
+        <script src="{% static 'js/script.js' %}"></script>
+    </body>
+</html>

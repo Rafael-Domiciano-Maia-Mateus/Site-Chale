@@ -16,5 +16,5 @@ urlpatterns = [
     path('verificar_disponibilidade/', verificar_disponibilidade, name='verificar_disponibilidade'),
     path('datas_indisponiveis/', datas_indisponiveis, name='datas_indisponiveis'),
     path('obter_max_pessoas/', obter_max_pessoas, name='obter_max_pessoas'),
-    path('analise/', analise, name='analise'),
+    path('administracao/', administracao, name='administracao'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
