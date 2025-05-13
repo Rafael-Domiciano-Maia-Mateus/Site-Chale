@@ -90,6 +90,10 @@ def obter_max_pessoas(request):
         return JsonResponse({'max_pessoas': 0})
 
 
+def home_reservas(request):
+    return render(request, 'home_reservas.html')
+
+
 @login_required
 def reservas(request):
     '''

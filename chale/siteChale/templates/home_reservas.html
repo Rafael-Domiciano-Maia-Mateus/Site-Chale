@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Chalés São Mateus - Homepage Reservas</title>
+        <link rel="stylesheet" href="{% static 'css/home_reservas.css' %}" />
+    </head>
+    <body>
+        <div id="loader">
+            <div class="loader"></div>
+        </div>
+
+        <div id="content">
+            {% include 'base.html' %}
+            <div class="reserva">
+                <p><strong>Não tem nenhuma reserva no momento</strong></p>
+                <div class="texto-reserva">
+                    <a href="{% url 'reservas' %}" class="link-reserva">Faça sua reserva</a>
+                </div>
+            </div>
+        </div>
+
+        <script src="{% static 'js/script.js' %}"></script>
+    </body>
+</html>

@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,9 +19,7 @@
                 <p><strong>E-mail:</strong> {{ email }}</p>
                 <p><strong>telefone:</strong> {{ telefone }}</p>
                 <div class="link-reserva">
-                    <a href="{% url 'hospedagem' %}" class="link-hospedagem"
-                        >Verifique sua reserva</a
-                    >
+                    <a href="{% url 'reservas' %}" class="link-hospedagem">Verifique sua reserva</a>
                 </div>
             </div>
         </div>
