@@ -286,6 +286,10 @@ def upload_foto(request):
     return render(request, 'upload_foto.html', {'form': form})
 
 
+def hospedagem(request):
+    return render(request, 'hospedagem.html')
+
+
 def login_view(request):
     '''
     Exibe a página de login e processa as tentativas de autenticação de usuários.

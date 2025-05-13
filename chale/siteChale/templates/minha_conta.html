@@ -18,6 +18,11 @@
                 <p><strong>Nome:</strong> {{ nome }}</p>
                 <p><strong>E-mail:</strong> {{ email }}</p>
                 <p><strong>telefone:</strong> {{ telefone }}</p>
+                <div class="link-reserva">
+                    <a href="{% url 'hospedagem' %}" class="link-hospedagem"
+                        >Verifique sua reserva</a
+                    >
+                </div>
             </div>
         </div>
         <script type="module" src="{% static 'js/script.js' %}"></script>

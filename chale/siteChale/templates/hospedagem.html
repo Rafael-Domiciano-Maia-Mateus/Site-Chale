@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Chalés São Mateus - Hospedagem</title>
+    </head>
+    <body>
+        <div id="loader">
+            <div class="loader"></div>
+        </div>
+
+        <div class="content">
+            {% include 'base.html' %}
+            <div class="main-container">
+                <p>Em Desenvolvimento</p>
+            </div>
+        </div>
+
+        <script src="{% static 'js/script.js' %}"></script>
+    </body>
+</html>
