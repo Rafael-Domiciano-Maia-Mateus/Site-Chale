@@ -290,8 +290,18 @@ def upload_foto(request):
     return render(request, 'upload_foto.html', {'form': form})
 
 
-def hospedagem(request):
-    return render(request, 'hospedagem.html')
+def home_reservas(request):
+    cliente = Cliente.objects.get(usuario=request.user)
+    reserva = Reserva.objects.filter(cliente=cliente).last()
+    return render(request, 'home_reservas.html', {
+        'nome': cliente.nome if reserva else '',
+        'email': cliente.email if reserva else '',
+        'telefone': cliente.telefone if reserva else '',
+        'chale': reserva.chale.nomeChale if reserva else '',
+        'checkin': reserva.checkin if reserva else '',
+        'checkout': reserva.checkout if reserva else '',
+        'numero_pessoas': reserva.quantidadePessoas if reserva else '',
+    })
 
 
 def login_view(request):

@@ -23,7 +23,9 @@
                 <p><strong>Quantidade de diárias:</strong> {{ dias }}</p>
                 <p><strong>Taxa fixa:</strong> R$ {{ taxa }}</p>
                 <p><strong>Valor total:</strong> R$ {{ valor_total }}</p>
-                <button type="submit">Continuar</button>
+                <div class="center"></div>
+                    <a href="{% url 'home_reservas' %}" class="link-reserva">Continuar</a>
+                </div>
             </div>
         </div>
         <script type="module" src="{% static 'js/script.js' %}"></script>

@@ -17,9 +17,11 @@
                 <h2>Usuário</h2>
                 <p><strong>Nome:</strong> {{ nome }}</p>
                 <p><strong>E-mail:</strong> {{ email }}</p>
-                <p><strong>telefone:</strong> {{ telefone }}</p>
+                <p><strong>Telefone:</strong> {{ telefone }}</p>
                 <div class="link-reserva">
-                    <a href="{% url 'reservas' %}" class="link-hospedagem">Verifique sua reserva</a>
+                    <a href="{% url 'home_reservas' %}" class="link-hospedagem"
+                        >Verifique sua reserva</a
+                    >
                 </div>
             </div>
         </div>

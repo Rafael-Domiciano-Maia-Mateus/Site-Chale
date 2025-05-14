@@ -15,7 +15,13 @@
         <div id="content">
             {% include 'base.html' %}
             <div class="reserva">
-                <p><strong>Não tem nenhuma reserva no momento</strong></p>
+                <p><strong>Nome:</strong> {{ nome }}</p>
+                <p><strong>E-mail:</strong> {{ email }}</p>
+                <p><strong>Telefone:</strong> {{ telefone }}</p>
+                <p><strong>Chalé:</strong> {{ chale }}</p>
+                <p><strong>Check-in:</strong> {{ checkin }}</p>
+                <p><strong>Check-out:</strong> {{ checkout }}</p>
+                <p><strong>Quantidade de pessoas:</strong> {{ numero_pessoas }}</p>
                 <div class="texto-reserva">
                     <a href="{% url 'reservas' %}" class="link-reserva">Faça sua reserva</a>
                 </div>
