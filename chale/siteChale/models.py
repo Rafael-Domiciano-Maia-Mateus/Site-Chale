@@ -135,7 +135,7 @@ class Reserva(models.Model):
         dias = (self.checkout - self.checkin).days
         if dias <= 0:
             return 0
-        return (dias * self.chale.preco) + self.chale.taxa  # Acessando o campo 'taxa' corretamente
+        return (dias * self.chale.preco) + self.chale.taxa  
 
     
 
