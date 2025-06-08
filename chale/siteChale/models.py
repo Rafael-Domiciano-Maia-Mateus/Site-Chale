@@ -24,7 +24,7 @@ class Foto(models.Model):
     '''
     titulo = models.CharField(max_length=200, null=True, blank=True)
     imagem = models.ImageField(upload_to='fotos/')
-    descricao = models.CharField(max_length=200, null=True, blank=True)
+    descricao = models.TextField(max_length=500, null=True, blank=True)
     data_upload = models.DateField(auto_now_add=True)
 
     def __str__(self):
