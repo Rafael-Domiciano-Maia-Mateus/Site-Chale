@@ -304,6 +304,10 @@ def home_reservas(request):
     })
 
 
+def chat(request):
+    return render(request, 'chat.html')
+    
+
 def login_view(request):
     '''
     Exibe a página de login e processa as tentativas de autenticação de usuários.

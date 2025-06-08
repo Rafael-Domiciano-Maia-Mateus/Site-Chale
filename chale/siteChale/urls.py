@@ -18,4 +18,5 @@ urlpatterns = [
     path('obter_max_pessoas/', obter_max_pessoas, name='obter_max_pessoas'),
     path('administracao/', administracao, name='administracao'),
     path('home_reservas/', home_reservas, name='home_reservas'),
+    path('chat/', chat, name='chat'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

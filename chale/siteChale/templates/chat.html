@@ -4,8 +4,8 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Chalés São Mateus - Ajuda</title>
-        <link rel="stylesheet" href="{% static 'css/ajuda.css' %}" />
+        <title>Chalés São Mateus - Chat</title>
+        <link rel="stylesheet" href="{% static 'css/chat.css' %}" />
     </head>
     <body>
         <div id="loader">
@@ -13,10 +13,7 @@
         </div>
 
         <div class="content">
-            {% include 'base.html' %}
-            <div class="main-container">
-                <p></p>
-            </div>
+            <a href="{% url 'homepage' %}">Voltar</a>
         </div>
 
         <script src="{% static 'js/script.js' %}"></script>
