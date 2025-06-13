@@ -306,6 +306,10 @@ def home_reservas(request):
 
 def chat(request):
     return render(request, 'chat.html')
+
+
+def NovoLogin(request):
+    return render(request, 'NovoLogin.html')
     
 
 def login_view(request):
@@ -389,3 +393,7 @@ def register(request):
         return redirect('login')
 
     return render(request, 'register.html')
+
+
+def recuperarSenha(request):
+    return render(request, 'recuperarSenha.html')

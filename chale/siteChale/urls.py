@@ -19,4 +19,6 @@ urlpatterns = [
     path('administracao/', administracao, name='administracao'),
     path('home_reservas/', home_reservas, name='home_reservas'),
     path('chat/', chat, name='chat'),
+    path('NovoLogin/', NovoLogin, name='NovoLogin'),
+    path('recuperarSenha/', recuperarSenha, name='recuperarSenha'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
