@@ -306,93 +306,64 @@ def home_reservas(request):
 
 def chat(request):
     return render(request, 'chat.html')
-
-
-def NovoLogin(request):
-    return render(request, 'NovoLogin.html')
     
 
-def login_view(request):
-    '''
-    Exibe a página de login e processa as tentativas de autenticação de usuários.
-
-    Este view trata tanto requisições GET quanto POST:
-    - Em requisições GET, apenas renderiza a página de login.
-    - Em requisições POST, tenta autenticar o usuário com os dados fornecidos.
-
-    Parâmetros:
-    request (HttpRequest): O objeto da requisição HTTP, que pode conter dados de login enviados via POST.
-
-    Retorna:
-    HttpResponse: A página de login renderizada, ou um redirecionamento para a homepage em caso de sucesso.
-    '''
-
+def login_register_view(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+        action = request.POST.get('action')
 
-        if not username or not password:
-            messages.error(request, 'Todos os campos são obrigatórios.')
-            return render(request, 'login.html')
+        if action == 'login':
+            username = request.POST.get('username')
+            password = request.POST.get('password')
 
-        user = authenticate(request, username=username, password=password)
+            if not username or not password:
+                messages.error(request, 'Todos os campos são obrigatórios para login.')
+                return redirect('login') 
 
-        if user is not None:
-            if user.is_active:
-                login(request, user)
-                messages.success(request, f'Bem-vindo, {user.username}!')
-                return redirect('homepage')  
+            user = authenticate(request, username=username, password=password)
+
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    messages.success(request, f'Bem-vindo, {user.username}!')
+                    return redirect('homepage')
+                else:
+                    messages.error(request, 'Esta conta está desativada.')
             else:
-                messages.error(request, 'Esta conta está desativada.')
-        else:
-            messages.error(request, 'Nome de usuário ou senha inválidos.')
-            
-        return render(request, 'login.html')
+                messages.error(request, 'Nome de usuário ou senha inválidos.')
+            return redirect('login')  
+
+        elif action == 'register':
+            username = request.POST.get('username')
+            email = request.POST.get('email')
+            telefone = request.POST.get('telefone')
+            password = request.POST.get('password')
+            confirm_password = request.POST.get('confirm_password')
+
+            if not all([username, email, telefone, password, confirm_password]):
+                messages.error(request, 'Todos os campos são obrigatórios para registro.')
+                return redirect('login')
+
+            if password != confirm_password:
+                messages.error(request, 'As senhas não coincidem.')
+                return redirect('login')
+
+            if User.objects.filter(username=username).exists():
+                messages.error(request, 'Nome de usuário já está em uso.')
+                return redirect('login')
+
+            if User.objects.filter(email=email).exists():
+                messages.error(request, 'E-mail já está em uso.')
+                return redirect('login')
+
+            user = User.objects.create_user(username=username, email=email, password=password)
+            user.save()
+            Cliente.objects.create(usuario=user, nome=username, email=email, telefone=telefone)
+
+            messages.success(request, 'Cadastro realizado com sucesso! Faça login.')
+            return redirect('login')
+
     return render(request, 'login.html')
-
-
-def register(request):
-    '''
-    View para cadastro de novos usuários.
-
-    Esta view gerencia o processo de registro de usuários no sistema. Ela trata a submissão
-    do formulário de cadastro, realiza validações básicas (como senha confirmada, unicidade de 
-    nome de usuário e e-mail) e cria as instâncias correspondentes de `User` e `Cliente`.
-
-    Parâmetros:
-    - request (HttpRequest): Objeto de requisição contendo dados do formulário.
-
-    Retorna:
-    - HttpResponse: Renderiza a página de registro (`register.html`) ou redireciona para o login em caso de sucesso.
-    '''
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        email = request.POST.get('email')
-        telefone = request.POST.get('telefone')  
-        password = request.POST.get('password')
-        confirm_password = request.POST.get('confirm_password')
-
-        if password != confirm_password:
-            messages.error(request, 'As senhas não coincidem.')
-            return render(request, 'register.html')
-            
-        if User.objects.filter(username=username).exists():
-            messages.error(request, 'Nome de usuário já está em uso.')
-            return render(request, 'register.html')
-            
-        if User.objects.filter(email=email).exists():
-            messages.error(request, 'E-mail já está em uso.')
-            return render(request, 'register.html')
-            
-        user = User.objects.create_user(username=username, email=email, password=password)
-        user.save()
-
-        Cliente.objects.create(usuario=user, nome=username, email=email, telefone=telefone)
-
-        messages.success(request, 'Cadastro realizado com sucesso! Faça login.')
-        return redirect('login')
-
-    return render(request, 'register.html')
 
 
 def recuperarSenha(request):
