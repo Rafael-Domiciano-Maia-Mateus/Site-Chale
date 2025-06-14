@@ -52,6 +52,25 @@ def administracao(request):
 
 
 def minha_conta(request):
+    '''
+    Exibe a página com os dados da conta do cliente logado.
+
+    Recupera as informações básicas (nome, e-mail e telefone) do cliente
+    associado ao usuário autenticado e as passa para o template
+    'minha_conta.html'.
+
+    Args:
+        request (HttpRequest): A requisição HTTP feita pelo usuário.
+
+    Returns:
+        HttpResponse: Resposta HTTP que renderiza o template 'minha_conta.html'
+        com os dados do cliente.
+
+    Contexto do template:
+        nome (str): Nome do cliente.
+        email (str): E-mail do cliente.
+        telefone (str): Telefone do cliente.
+    '''
     cliente = Cliente.objects.get(usuario=request.user)
     nome = cliente.nome
     email = cliente.email
@@ -291,6 +310,28 @@ def upload_foto(request):
 
 
 def home_reservas(request):
+    '''
+    Exibe a página inicial de reservas do cliente com os dados da última reserva realizada.
+
+    Recupera o cliente associado ao usuário logado e busca a última reserva feita por ele,
+    caso exista. Os dados são então passados para o template 'home_reservas.html'.
+
+    Args:
+        request (HttpRequest): A requisição HTTP feita pelo cliente.
+
+    Returns:
+        HttpResponse: A resposta HTTP renderizando a página 'home_reservas.html' com os
+        dados do cliente e da última reserva (se houver).
+
+    Contexto do template:
+        nome (str): Nome do cliente.
+        email (str): E-mail do cliente.
+        telefone (str): Telefone do cliente.
+        chale (str): Nome do chalé reservado.
+        checkin (date): Data de check-in da reserva.
+        checkout (date): Data de check-out da reserva.
+        numero_pessoas (int): Quantidade de pessoas na reserva.
+    '''
     cliente = Cliente.objects.get(usuario=request.user)
     reserva = Reserva.objects.filter(cliente=cliente).last()
     return render(request, 'home_reservas.html', {
