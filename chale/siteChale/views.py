@@ -309,6 +309,36 @@ def chat(request):
     
 
 def login_register_view(request):
+    '''
+    Lida com as ações de login e registro de usuários em uma única view.
+
+    Esta view trata requisições POST com duas possíveis ações:
+    - 'login': autentica o usuário com nome de usuário e senha.
+    - 'register': cadastra um novo usuário, validando os campos fornecidos.
+
+    Se for uma requisição GET, apenas renderiza a página de login.
+
+    Args:
+        request (HttpRequest): A requisição HTTP recebida do cliente.
+
+    Returns:
+        HttpResponse: Redireciona para 'homepage' em caso de login bem-sucedido,
+        redireciona para 'login' com mensagens de erro em caso de falhas, ou
+        renderiza a página de login em requisições GET.
+
+    Comportamento:
+        - Em caso de login:
+            - Verifica se os campos estão preenchidos.
+            - Autentica o usuário e o redireciona se bem-sucedido.
+            - Exibe mensagens de erro apropriadas caso contrário.
+        
+        - Em caso de registro:
+            - Verifica se todos os campos estão preenchidos.
+            - Valida unicidade de nome de usuário e e-mail.
+            - Valida se as senhas coincidem.
+            - Cria um novo usuário e cliente.
+            - Exibe mensagem de sucesso e redireciona para a tela de login.
+    '''
     if request.method == 'POST':
         action = request.POST.get('action')
 
@@ -325,7 +355,6 @@ def login_register_view(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    # messages.success(request, f'Bem-vindo, {user.username}!')
                     return redirect('homepage')
                 else:
                     messages.error(request, 'Esta conta está desativada.')
