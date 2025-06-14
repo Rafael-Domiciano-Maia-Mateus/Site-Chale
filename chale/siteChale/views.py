@@ -325,7 +325,7 @@ def login_register_view(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    messages.success(request, f'Bem-vindo, {user.username}!')
+                    # messages.success(request, f'Bem-vindo, {user.username}!')
                     return redirect('homepage')
                 else:
                     messages.error(request, 'Esta conta está desativada.')
