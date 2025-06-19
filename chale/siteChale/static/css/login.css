@@ -17,7 +17,7 @@ body {
     height: 100vh;
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background: url('../img/fotoChale.jpg') no-repeat center center fixed;
+    background: url("../img/fotoChale.png") no-repeat center center fixed;
     background-size: cover;
     position: relative;
 }

@@ -6,7 +6,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: url('../img/fotoChale.jpg') center center / cover no-repeat fixed;
+    background: url("../img/fotoChale.png") no-repeat center center fixed;
     min-height: 100vh;
     padding-top: 50px;
     display: flex;
