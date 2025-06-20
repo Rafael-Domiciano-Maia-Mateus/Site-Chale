@@ -11,7 +11,6 @@ import io
 from .forms import *
 from .models import *
 
-
 # Create your views here.
 def login_register_view(request):
     '''
@@ -93,10 +92,7 @@ def login_register_view(request):
             user = User.objects.create_user(username=username, email=email, password=password)
             user.save()
             Cliente.objects.create(usuario=user, nome=username, email=email, telefone=telefone)
-
-            messages.success(request, 'Cadastro realizado com sucesso! Faça login.')
             return redirect('login')
-
     return render(request, 'login.html')
 
 
@@ -166,10 +162,12 @@ def minha_conta(request):
     nome = cliente.nome
     email = cliente.email
     telefone = cliente.telefone
+    id_usuario = cliente.id_sessao
     return render(request, 'minha_conta.html', {
         'nome': nome,
         'email': email,
         'telefone': telefone,
+        'id': id_usuario,
     })
 
 
@@ -198,10 +196,6 @@ def obter_max_pessoas(request):
         return JsonResponse({'max_pessoas': chale.max_pessoas})  
     except Chale.DoesNotExist:
         return JsonResponse({'max_pessoas': 0})
-
-
-def home_reservas(request):
-    return render(request, 'home_reservas.html')
 
 
 @login_required
@@ -394,7 +388,7 @@ def upload_foto(request):
         form = FotoForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('homepage')  
+            return redirect('galeria')  
     else:
         form = FotoForm()
     return render(request, 'upload_foto.html', {'form': form})
@@ -432,7 +426,6 @@ def home_reservas(request):
         'chale': reserva.chale.nomeChale if reserva else '',
         'checkin': reserva.checkin if reserva else '',
         'checkout': reserva.checkout if reserva else '',
-        'numero_pessoas': reserva.quantidadePessoas if reserva else '',
     })
 
 

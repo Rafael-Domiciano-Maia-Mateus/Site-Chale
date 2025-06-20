@@ -51,11 +51,11 @@ class Cliente(models.Model):
     nome = models.CharField(max_length=200, null=True, blank=True)
     email = models.CharField(max_length=200, null=True, blank=True)
     telefone = models.CharField(max_length=200, null=True, blank=True)
-    id_sessao = models.CharField(max_length=200, null=True, blank=True)
+    id_sessao = models.AutoField(primary_key=True)
     usuario = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'Nome: {self.nome}, ID Sessão: {self.id_sessao}'
+        return f'Nome: {self.nome}, ID Usuário: {self.id_sessao}'
 
 
 class Chale(models.Model):

@@ -15,6 +15,7 @@
         <div id="content">
             {% include 'base.html' %}
             <div class="reserva">
+                {% if reserva %}
                 <p><strong>Nome:</strong> {{ nome }}</p>
                 <p><strong>E-mail:</strong> {{ email }}</p>
                 <p><strong>Telefone:</strong> {{ telefone }}</p>
@@ -22,6 +23,10 @@
                 <p><strong>Check-in:</strong> {{ checkin }}</p>
                 <p><strong>Check-out:</strong> {{ checkout }}</p>
                 <p><strong>Quantidade de pessoas:</strong> {{ numero_pessoas }}</p>
+                {% else %}
+                <p style="font-size: 20px; font-weight: bold">Não tem reservas no momento</p>
+                {% endif %}
+
                 <div class="texto-reserva">
                     <a href="{% url 'reservas' %}" class="link-reserva">Faça sua reserva</a>
                     <a href="{% url 'chat' %}" class="link-reserva">Fale com a gente</a>
